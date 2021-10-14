@@ -18,6 +18,8 @@ class NetworkManager {
     private init() {}
     private let gitUrl = "https://api.github.com/users"
     
+    //MARK: Fetch data from network
+    
     func fetchUsers(perPage: Int = 25, sinceId: Int? = nil, completion: @escaping (Result<[User], NetworkError>) -> Void) {
         var components = URLComponents(string: gitUrl)
         components?.queryItems = [
@@ -49,7 +51,7 @@ class NetworkManager {
         }.resume()
     }
     
-    func fetchRepo(url: String, completion: @escaping (Result<[Repos], NetworkError>) -> Void) {
+    func fetchRepo(from url: String, completion: @escaping (Result<[Repos], NetworkError>) -> Void) {
         guard let url = URL(string: url) else {
             completion(.failure(.invalidUrl))
             return
@@ -73,8 +75,9 @@ class NetworkManager {
         }.resume()
     }
     
-    func fetchImage(from url: String, completion: @escaping(Data, URLResponse) -> Void) {
-        guard let url = URL(string: url) else { return }
+    //MARK: Fetch image from network
+    
+    func fetchImage(from url: URL, completion: @escaping(Data, URLResponse) -> Void) {
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data, let response = response else {
                 print(error?.localizedDescription ?? "No error description")

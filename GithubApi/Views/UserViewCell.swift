@@ -9,14 +9,14 @@ import UIKit
 
 class UserViewCell: UITableViewCell {
     
-    let avatarImageView: UIImageView = {
+    private let avatarImageView: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleToFill
         image.clipsToBounds = true
         return image
     }()
     
-    let loginLabel: UILabel = {
+    private let loginLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
         label.font = UIFont.boldSystemFont(ofSize: 16.5)
@@ -40,9 +40,8 @@ class UserViewCell: UITableViewCell {
     
     func configureCell(with user: User) {
         loginLabel.text = user.login
-        NetworkManager.shared.fetchImage(from: user.avatarUrl) { data, _ in
-            self.avatarImageView.image = UIImage(data: data)
-        }
+        guard let url = URL(string: user.avatarUrl) else { return }
+        avatarImageView.fetchImage(from: url)
     }
 
     private func setupConstrains() {

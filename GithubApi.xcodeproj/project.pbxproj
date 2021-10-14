@@ -17,6 +17,7 @@
 		953618572716CFA8005144C2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953618562716CFA8005144C2 /* User.swift */; };
 		953618592716D101005144C2 /* Repos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953618582716D101005144C2 /* Repos.swift */; };
 		9536185B2716DF92005144C2 /* DetailRepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9536185A2716DF92005144C2 /* DetailRepoViewController.swift */; };
+		95CD98E82718EB970073F18D /* Extension + UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CD98E72718EB970073F18D /* Extension + UIImageView.swift */; };
 		95D749DF271713B9006252E9 /* UserViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D749DE271713B9006252E9 /* UserViewCell.swift */; };
 		95D749E1271713C7006252E9 /* RepoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D749E0271713C7006252E9 /* RepoViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -34,6 +35,7 @@
 		953618562716CFA8005144C2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		953618582716D101005144C2 /* Repos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repos.swift; sourceTree = "<group>"; };
 		9536185A2716DF92005144C2 /* DetailRepoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRepoViewController.swift; sourceTree = "<group>"; };
+		95CD98E72718EB970073F18D /* Extension + UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIImageView.swift"; sourceTree = "<group>"; };
 		95D749DE271713B9006252E9 /* UserViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewCell.swift; sourceTree = "<group>"; };
 		95D749E0271713C7006252E9 /* RepoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,6 +75,7 @@
 				95D749E2271713CF006252E9 /* Views */,
 				95D749DB27171386006252E9 /* ViewControllers */,
 				95D749DC27171391006252E9 /* Services */,
+				95CD98E92718EBA00073F18D /* Extension */,
 				95D749DD27171399006252E9 /* Model */,
 				953618462716CDCC005144C2 /* Main.storyboard */,
 				953618492716CDCF005144C2 /* Assets.xcassets */,
@@ -80,6 +83,14 @@
 				9536184E2716CDCF005144C2 /* Info.plist */,
 			);
 			path = GithubApi;
+			sourceTree = "<group>";
+		};
+		95CD98E92718EBA00073F18D /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				95CD98E72718EB970073F18D /* Extension + UIImageView.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		95D749DB27171386006252E9 /* ViewControllers */ = {
@@ -192,6 +203,7 @@
 				953618552716CF42005144C2 /* NetworkManager.swift in Sources */,
 				953618452716CDCC005144C2 /* UsersViewController.swift in Sources */,
 				953618412716CDCC005144C2 /* AppDelegate.swift in Sources */,
+				95CD98E82718EB970073F18D /* Extension + UIImageView.swift in Sources */,
 				9536185B2716DF92005144C2 /* DetailRepoViewController.swift in Sources */,
 				953618592716D101005144C2 /* Repos.swift in Sources */,
 				953618572716CFA8005144C2 /* User.swift in Sources */,

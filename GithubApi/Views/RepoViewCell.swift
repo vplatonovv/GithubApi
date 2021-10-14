@@ -9,7 +9,7 @@ import UIKit
 
 class RepoViewCell: UITableViewCell {
     
-    let repoLabel: UILabel = {
+    private let repoLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
         label.font = UIFont.boldSystemFont(ofSize: 16.5)
@@ -17,7 +17,7 @@ class RepoViewCell: UITableViewCell {
         return label
     }()
     
-    let dateLabel: UILabel = {
+    private let dateLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
         label.font = UIFont.boldSystemFont(ofSize: 16.5)

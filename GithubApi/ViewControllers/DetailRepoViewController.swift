@@ -9,8 +9,6 @@ import UIKit
 
 class DetailRepoViewController: UIViewController {
     
-    private var repos: [Repos] = []
-
     @IBOutlet weak var userImage: UIImageView! {
         didSet {
             userImage.layer.cornerRadius = 20
@@ -21,19 +19,23 @@ class DetailRepoViewController: UIViewController {
     
     @IBOutlet weak var repoTableView: UITableView!
     
+    private var repos: [Repos] = []
+    var user: User!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
+        fetchImage(with: user.avatarUrl)
+        fetchData(with: user.reposUrl)
     }
     
-    private func configureTableView() {
-        repoTableView.delegate = self
-        repoTableView.dataSource = self
-        repoTableView.rowHeight = 80
+    func fetchImage(with url: String) {
+        guard let url = URL(string: url) else { return }
+        userImage.fetchImage(from: url)
     }
     
     func fetchData(with url: String) {
-        NetworkManager.shared.fetchRepo(url: url) { result in
+        NetworkManager.shared.fetchRepo(from: url) { result in
             switch result {
             case .success(let repos):
                 self.repos = repos
@@ -44,13 +46,14 @@ class DetailRepoViewController: UIViewController {
         }
     }
     
-    func fetchImage(with url: String) {
-        NetworkManager.shared.fetchImage(from: url) { data, _ in
-            self.userImage.image = UIImage(data: data)
-        }
+    private func configureTableView() {
+        repoTableView.delegate = self
+        repoTableView.dataSource = self
+        repoTableView.rowHeight = 80
     }
-    
 }
+
+//MARK: TableViewDataSource, TableViewDelegate
 
 extension DetailRepoViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -65,7 +68,7 @@ extension DetailRepoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        "Repos"
+        "Repositories"
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -9,12 +9,12 @@ import UIKit
 
 class UsersViewController: UIViewController {
     
+    @IBOutlet weak var tableView: UITableView!
+    
     private var currentLastId: Int? = nil
     private let limiteUsers = 25
     private var users: [User] = []
     private var isLoading = false
-    
-    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +26,7 @@ class UsersViewController: UIViewController {
         guard let detailVC = segue.destination as? DetailRepoViewController else { return }
         guard let index = tableView.indexPathForSelectedRow else { return }
         let user = users[index.row]
-        detailVC.fetchData(with: user.reposUrl)
-        detailVC.fetchImage(with: user.avatarUrl)
+        detailVC.user = user
         detailVC.title = user.login
     }
     
@@ -72,6 +71,8 @@ class UsersViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
 }
+
+//MARK: TableViewDataSource, TableViewDelegate
 
 extension UsersViewController: UITableViewDelegate, UITableViewDataSource {
     
