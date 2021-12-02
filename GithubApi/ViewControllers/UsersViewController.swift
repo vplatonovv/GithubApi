@@ -16,18 +16,41 @@ class UsersViewController: UIViewController {
     private var users: [User] = []
     private var isLoading = false
     
+    private var filteredUsers: [User] = []
+    private var searchBarIsEmpty: Bool {
+        guard let text = searchController.searchBar.text else { return false }
+        return text.isEmpty
+    }
+    private var isFiltering: Bool {
+        searchController.isActive && !searchBarIsEmpty
+    }
+    
+    private let searchController = UISearchController(searchResultsController: nil)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
         fetchData()
+        configureSearchController()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let detailVC = segue.destination as? DetailRepoViewController else { return }
         guard let index = tableView.indexPathForSelectedRow else { return }
-        let user = users[index.row]
+        let user: User
+        if isFiltering {
+            user = filteredUsers[index.row]
+        } else {
+            user = users[index.row]
+        }
         detailVC.user = user
         detailVC.title = user.login
+    }
+    
+    private func configureSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        navigationItem.searchController = searchController
     }
     
     private func configureTableView() {
@@ -37,7 +60,7 @@ class UsersViewController: UIViewController {
     }
     
     private func fetchData() {
-        NetworkManager.shared.fetchUsers(perPage: limiteUsers, sinceId: currentLastId) { result in
+        NetworkManager.shared.fetchUsers(perPage: limiteUsers, sinceId: currentLastId) { [unowned self] result in
             switch result {
             case .success(let users):
                 guard !self.isLoading else { return }
@@ -77,12 +100,20 @@ class UsersViewController: UIViewController {
 extension UsersViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        users.count
+        if isFiltering {
+            return filteredUsers.count
+        }
+        return users.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! UserViewCell
-        let user = users[indexPath.row]
+        var user: User
+        if isFiltering {
+            user = filteredUsers[indexPath.row]
+        } else {
+            user = users[indexPath.row]
+        }
         cell.configureCell(with: user)
         return cell
     }
@@ -98,5 +129,21 @@ extension UsersViewController: UITableViewDelegate, UITableViewDataSource {
             print("fetch data from \(indexPath.row) started!")
             loadMoreData()
         }
+    }
+}
+
+//MARK: SerachResultUpdating
+
+extension UsersViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
+    
+    private func filterContentForSearchText(_ searchText: String) {
+        filteredUsers = users.filter({ user in
+            user.login.lowercased().contains(searchText.lowercased())
+        })
+        tableView.reloadData()
     }
 }

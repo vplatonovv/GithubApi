@@ -16,18 +16,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="github" translatesAutoresizingMaskIntoConstraints="NO" id="7Vz-kh-se4">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="github_filled1600.png" translatesAutoresizingMaskIntoConstraints="NO" id="7Vz-kh-se4">
                                 <rect key="frame" x="58.5" y="83" width="258" height="122"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GITHUB API TEST" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xd9-F3-DuU">
-                                <rect key="frame" x="88.5" y="263" width="198" height="24.5"/>
+                                <rect key="frame" x="88.5" y="245" width="198" height="24.5"/>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="7Vz-kh-se4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="83" id="0P4-5F-5Wb"/>
                             <constraint firstItem="xd9-F3-DuU" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="4Hn-bW-oFS"/>
@@ -36,7 +36,7 @@
                             <constraint firstItem="7Vz-kh-se4" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.688406" id="VeG-eP-EfK"/>
                             <constraint firstItem="7Vz-kh-se4" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="XoE-GC-Xgu"/>
                             <constraint firstItem="xd9-F3-DuU" firstAttribute="width" relation="greaterThanOrEqual" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.478261" id="fiB-nH-nmb"/>
-                            <constraint firstItem="xd9-F3-DuU" firstAttribute="top" secondItem="7Vz-kh-se4" secondAttribute="bottom" constant="58" id="hyZ-fn-met"/>
+                            <constraint firstItem="xd9-F3-DuU" firstAttribute="top" secondItem="7Vz-kh-se4" secondAttribute="bottom" constant="40" id="hyZ-fn-met"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -46,9 +46,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="github" width="2350" height="2314.800048828125"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <image name="github_filled1600.png" width="40" height="40"/>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

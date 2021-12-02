@@ -20,6 +20,7 @@
 		95CD98E82718EB970073F18D /* Extension + UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CD98E72718EB970073F18D /* Extension + UIImageView.swift */; };
 		95D749DF271713B9006252E9 /* UserViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D749DE271713B9006252E9 /* UserViewCell.swift */; };
 		95D749E1271713C7006252E9 /* RepoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D749E0271713C7006252E9 /* RepoViewCell.swift */; };
+		95EF611E2758F6110087915A /* github_filled1600.png in Resources */ = {isa = PBXBuildFile; fileRef = 95EF611D2758F6110087915A /* github_filled1600.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		95CD98E72718EB970073F18D /* Extension + UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIImageView.swift"; sourceTree = "<group>"; };
 		95D749DE271713B9006252E9 /* UserViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewCell.swift; sourceTree = "<group>"; };
 		95D749E0271713C7006252E9 /* RepoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoViewCell.swift; sourceTree = "<group>"; };
+		95EF611D2758F6110087915A /* github_filled1600.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = github_filled1600.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				953618492716CDCF005144C2 /* Assets.xcassets */,
 				9536184B2716CDCF005144C2 /* LaunchScreen.storyboard */,
 				9536184E2716CDCF005144C2 /* Info.plist */,
+				95EF611D2758F6110087915A /* github_filled1600.png */,
 			);
 			path = GithubApi;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9536184D2716CDCF005144C2 /* LaunchScreen.storyboard in Resources */,
+				95EF611E2758F6110087915A /* github_filled1600.png in Resources */,
 				9536184A2716CDCF005144C2 /* Assets.xcassets in Resources */,
 				953618482716CDCC005144C2 /* Main.storyboard in Resources */,
 			);
