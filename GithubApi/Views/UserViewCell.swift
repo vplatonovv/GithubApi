@@ -9,14 +9,14 @@ import UIKit
 
 class UserViewCell: UITableViewCell {
     
-    private let avatarImageView: UIImageView = {
+    private lazy var avatarImageView: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleToFill
         image.clipsToBounds = true
         return image
     }()
     
-    private let loginLabel: UILabel = {
+    private lazy var loginLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
         label.font = UIFont.boldSystemFont(ofSize: 16.5)
@@ -48,14 +48,14 @@ class UserViewCell: UITableViewCell {
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
         loginLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        avatarImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        avatarImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
-        avatarImageView.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        avatarImageView.widthAnchor.constraint(equalTo: avatarImageView.heightAnchor).isActive = true
-        
-        loginLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -10).isActive = true
-        loginLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 20).isActive = true
-        loginLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        NSLayoutConstraint.activate([avatarImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+                                     avatarImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+                                     avatarImageView.heightAnchor.constraint(equalToConstant: 60),
+                                     avatarImageView.widthAnchor.constraint(equalTo: avatarImageView.heightAnchor)
+                                    ])
+        NSLayoutConstraint.activate([loginLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -10),
+                                     loginLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 20),
+                                     loginLabel.heightAnchor.constraint(equalToConstant: 50)
+                                    ])
     }
-
 }

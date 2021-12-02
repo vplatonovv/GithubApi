@@ -9,7 +9,7 @@ import UIKit
 
 class RepoViewCell: UITableViewCell {
     
-    private let repoLabel: UILabel = {
+    private lazy var repoLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
         label.font = UIFont.boldSystemFont(ofSize: 16.5)
@@ -17,14 +17,14 @@ class RepoViewCell: UITableViewCell {
         return label
     }()
     
-    private let dateLabel: UILabel = {
+    private lazy var dateLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
         label.font = UIFont.boldSystemFont(ofSize: 16.5)
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         addSubview(repoLabel)
@@ -36,17 +36,18 @@ class RepoViewCell: UITableViewCell {
         repoLabel.text = repo.name
         dateLabel.text = Repos.convertDate(from: repo.createdAt)
     }
-
+    
     private func setupConstrains() {
         repoLabel.translatesAutoresizingMaskIntoConstraints = false
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        repoLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
-        repoLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
+        NSLayoutConstraint.activate([repoLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+                                     repoLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16),
+                                     dateLabel.leadingAnchor.constraint(equalTo: repoLabel.leadingAnchor),
+                                     dateLabel.topAnchor.constraint(equalTo: repoLabel.bottomAnchor, constant: 10)
+                                    ])
         
-        dateLabel.leadingAnchor.constraint(equalTo: repoLabel.leadingAnchor).isActive = true
-        dateLabel.topAnchor.constraint(equalTo: repoLabel.bottomAnchor, constant: 10).isActive = true
     }
-
+    
 }
 
