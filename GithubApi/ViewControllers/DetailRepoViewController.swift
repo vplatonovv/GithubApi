@@ -13,7 +13,7 @@ class DetailRepoViewController: UIViewController {
         didSet {
             userImage.layer.cornerRadius = 20
             userImage.layer.borderWidth = 2
-            userImage.layer.borderColor = UIColor.systemBlue.cgColor
+            userImage.layer.borderColor = UIColor.black.cgColor
         }
     }
     
@@ -27,6 +27,7 @@ class DetailRepoViewController: UIViewController {
         configureTableView()
         fetchImage(with: user.avatarUrl)
         fetchData(with: user.reposUrl)
+        repoTableView.tableFooterView?.isHidden = true
     }
     
     func fetchImage(with url: String) {
@@ -35,7 +36,7 @@ class DetailRepoViewController: UIViewController {
     }
     
     func fetchData(with url: String) {
-        NetworkManager.shared.fetchRepo(from: url) { result in
+        NetworkManager.shared.fetchRepo(from: url) { [unowned self] result in
             switch result {
             case .success(let repos):
                 self.repos = repos
@@ -66,12 +67,15 @@ extension DetailRepoViewController: UITableViewDelegate, UITableViewDataSource {
         cell.configureCell(with: repo)
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        "Repositories"
-    }
-    
+        
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if repos.isEmpty {
+            return "No repos"
+        }
+        return "Repositories"
     }
 }

@@ -10,6 +10,7 @@ import UIKit
 class UsersViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    private let searchController = UISearchController(searchResultsController: nil)
     
     private var currentLastId: Int? = nil
     private let limiteUsers = 25
@@ -25,13 +26,22 @@ class UsersViewController: UIViewController {
         searchController.isActive && !searchBarIsEmpty
     }
     
-    private let searchController = UISearchController(searchResultsController: nil)
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
         fetchData()
         configureSearchController()
+        
+        // FIX SPACING BETWEEN HEADER AND TABLEVIEW
+        tableView.scrollsToTop = false
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Top", style: .plain, target: self, action: #selector(handleTop))
+    }
+    
+    @objc func handleTop() {
+        print("Scroll to top...")
+        let indexPath = IndexPath(row: 0, section: 0)
+        tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+        tableView.setContentOffset(CGPoint(x: 0, y: -1), animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -79,7 +89,7 @@ class UsersViewController: UIViewController {
     
     private func loadMoreData() {
         let spinner = UIActivityIndicatorView(style: .medium)
-        spinner.frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 100)
+        spinner.frame = CGRect(x: 0, y: 0, width: tableView.frame.width, height: 100)
         spinner.startAnimating()
         fetchData()
         tableView.tableFooterView = spinner
@@ -137,7 +147,9 @@ extension UsersViewController: UITableViewDelegate, UITableViewDataSource {
 extension UsersViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
-        filterContentForSearchText(searchController.searchBar.text!)
+        if let textFromSearchBar = searchController.searchBar.text {
+            filterContentForSearchText(textFromSearchBar)
+        }
     }
     
     private func filterContentForSearchText(_ searchText: String) {

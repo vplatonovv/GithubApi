@@ -14,8 +14,8 @@ struct Repos: Decodable {
     static func convertDate(from date: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         let date = dateFormatter.date(from: date) ?? Date.now
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "dd MMM yyyy"
         let dateStr = dateFormatter.string(from: date)
         return dateStr

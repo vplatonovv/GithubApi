@@ -48,6 +48,5 @@ class RepoViewCell: UITableViewCell {
                                     ])
         
     }
-    
 }
 

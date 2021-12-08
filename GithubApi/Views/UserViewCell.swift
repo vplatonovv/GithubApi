@@ -34,8 +34,8 @@ class UserViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         avatarImageView.layer.cornerRadius = avatarImageView.bounds.height / 2
-        avatarImageView.layer.borderWidth = 1
-        avatarImageView.layer.borderColor = UIColor.systemBlue.cgColor
+        avatarImageView.layer.borderWidth = 2
+        avatarImageView.layer.borderColor = UIColor.black.cgColor
     }
     
     func configureCell(with user: User) {
