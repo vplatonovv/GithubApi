@@ -20,7 +20,8 @@ class NetworkManager {
     
     //MARK: Fetch data from network
     
-    func fetchUsers(perPage: Int = 25, sinceId: Int? = nil, completion: @escaping (Result<[User], NetworkError>) -> Void) {
+    func fetchUsers(
+        perPage: Int = 25, sinceId: Int? = nil, completion: @escaping (Result<[User], NetworkError>) -> Void) {
         var components = URLComponents(string: gitUrl)
         components?.queryItems = [
         URLQueryItem(name: "per_page", value: "\(perPage)"),
