@@ -12,6 +12,7 @@ class UsersViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     private let searchController = UISearchController(searchResultsController: nil)
     
+    
     private var currentLastId: Int? = nil
     private let limiteUsers = 25
     private var users: [User] = []
@@ -32,7 +33,7 @@ class UsersViewController: UIViewController {
         fetchData()
         configureSearchController()
         
-        // FIX SPACING BETWEEN HEADER AND TABLEVIEW
+        //FIX SPACING BETWEEN HEADER AND TABLEVIEW
         tableView.scrollsToTop = false
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Top", style: .plain, target: self, action: #selector(handleTop))
     }
