@@ -38,6 +38,11 @@ class UserViewCell: UITableViewCell {
         avatarImageView.layer.borderColor = UIColor.black.cgColor
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        avatarImageView.image = nil
+    }
+    
     func configureCell(with user: User) {
         loginLabel.text = user.login
         guard let url = URL(string: user.avatarUrl) else { return }
