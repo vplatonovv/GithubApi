@@ -40,7 +40,7 @@ class UserViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        avatarImageView.image = nil
+        avatarImageView.image = nil 
     }
     
     func configureCell(with user: User) {
