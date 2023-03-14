@@ -1,9 +1,9 @@
 # GithubApi
 
-Проект содержит:
+Contains
 - tableview
-- бесконечную ленту
-- у каждой сущности можно открыть детальную информацию
+- infinite scroll
+- can open detail
 - URLSession
 - URLCache
 
