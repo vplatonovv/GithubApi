@@ -1,6 +1,4 @@
-# GithubApi
-
-Test Task
+# GithubApi Test Task
 
 Contains
 - tableview
